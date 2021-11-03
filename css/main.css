@@ -12,7 +12,7 @@ body {
   color: #444;
   /* background-color: #f3f3f3; */
   height: 100vh;
-  padding: 2rem;
+  /* padding: 2rem; */
 }
 h1,
 h2 {
@@ -45,13 +45,20 @@ img {
 /*User Logs section*/
 
 /*******************/
+.user-logs-section {
+  padding-top: 6rem;
+}
 .user-logs {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   /* align-items: center; */
 }
+
 .user-logs-img {
+  /* background-color: #f3f3f3; */
+}
+.user-logs-form {
   /* background-color: #f3f3f3; */
 }
 .heading {
@@ -110,4 +117,13 @@ img {
 }
 .login__input:focus,
 .login__input:hover {
+}
+@media (max-width: 944px) {
+  .user-logs {
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+  .user-logs-img {
+    display: none;
+  }
 }
