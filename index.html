@@ -42,16 +42,16 @@
                <p class="heading-sub">Start banking with Banktrans</p>
             <!-- TABS -->
             <div class="tabs">
-                <div class="tab tab-login active">
+                <div class="tab tab-login active" onclick="openForm(event,'login')">
                     <p class="tab-title">Login</p>
                 </div>
-                <div class="tab tab-signup">
+                <div class="tab tab-signup" onclick="openForm(event,'signup')">
                     <p class="tab-title">SignUp</p>
                 </div>
             </div>
                <!-- LOGIN FORM -->
-               <div class="info-holder">
-                <form action="login ">
+               <div class="tab-content" id="login">
+                <form action="login" >
                     <div class="field">
                         <input type="text" placeholder="User" class="login__input">
                     </div>
@@ -67,8 +67,8 @@
                </div>
 
                <!-- SIGNUP FORM -->
-            <div class="info-holder">
-                <form action="" class="signup">
+            <div class="tab-content" id="signup">
+                <form action="" >
                     <div class="field">
                         <input type="text" placeholder="First Name" class="signup__input">
                     </div>
