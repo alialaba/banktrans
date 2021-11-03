@@ -13,7 +13,83 @@
  <title>Banktrans</title>
 </head>
 <body>
-    
+    <!-- TOP NAVIGATION -->
+    <nav class="navbar">
+        <div>
+            <p class="welcome">Banktrans</p>
+        </div>
+        <div>
+            <img src="/assets/logo.png" alt="Logo" class="logo" />
+        </div>
+        
+    </nav>
+
+    <section class="user-logs-section">
+        
+        <div class="user-logs">
+           <div class="user-logs-img">
+                <!-- <picture>
+                    <source srcset="assets/payment.webp" type="image/webp" />
+                    <source srcset="assets/payment-min.png" type="image/png" /> -->
+                    <img  src="/assets/payment-min.png"
+                     class="" 
+                     alt="payment illustration"
+                     />
+                <!-- </picture> -->
+           </div>
+           <div class="user-logs-form">
+               <h1 class="heading">Make your Transfer</h1>
+               <p class="heading-sub">Start banking with Banktrans</p>
+            <!-- TABS -->
+            <div class="tabs">
+                <div class="tab tab-login active">
+                    <p class="tab-title">Login</p>
+                </div>
+                <div class="tab tab-signup">
+                    <p class="tab-title">SignUp</p>
+                </div>
+            </div>
+               <!-- LOGIN FORM -->
+               <div class="info-holder">
+                <form action="login ">
+                    <div class="field">
+                        <input type="text" placeholder="User" class="login__input">
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Pin" maxlength="4" class="login__input">
+                    </div>
+                
+                    <div class="field">
+                        <button class="login__btn">Login &rarr;</button>
+                    </div>
+                </form>
+
+               </div>
+
+               <!-- SIGNUP FORM -->
+            <div class="info-holder">
+                <form action="" class="signup">
+                    <div class="field">
+                        <input type="text" placeholder="First Name" class="signup__input">
+                    </div>
+                    <div class="field">
+                        <input type="text" placeholder="Last Name" class="signup__input">
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Pin" maxlength="4" class="signup__input">
+                    </div>
+                
+                    <div class="field">
+                        <button class="signup__btn">Signup &rarr;</button>
+                    </div>
+                </form>
+
+            </div>
+
+           </div>
+        </div>
+
+    </section>
 
 <!-- CUSTOM JS -->
     <script src="/js/main.js"></script>

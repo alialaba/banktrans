@@ -7,8 +7,107 @@ html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
+body {
+  font-family: "Poppins", sans-serif;
+  color: #444;
+  /* background-color: #f3f3f3; */
+  height: 100vh;
+  padding: 2rem;
+}
+h1,
+h2 {
+  margin-top: 2rem;
+}
 .container {
   max-width: 1140px;
   margin: 0 auto;
   width: 95%;
+}
+img {
+  max-width: 100%;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1em;
+}
+.logo {
+  height: 5.25rem;
+}
+.welcome {
+  font-size: 1.8rem;
+  font-weight: 600;
+  visibility: hidden;
+}
+
+/********************/
+/*User Logs section*/
+
+/*******************/
+.user-logs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  /* align-items: center; */
+}
+.user-logs-img {
+  /* background-color: #f3f3f3; */
+}
+.heading {
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: #5d3fd3;
+}
+.heading-sub {
+  font-size: 1.3rem;
+  color: #cbc3e3;
+  font-weight: 600;
+}
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.tab {
+  cursor: pointer;
+}
+.tab .tab-title {
+  font-size: 1.3rem;
+  color: #000;
+  font-weight: 600;
+}
+.active,
+.tab:hover {
+  border-bottom: 2px solid #5d3fd3;
+}
+.field {
+  margin-top: 2rem;
+}
+.login__input,
+.signup__input {
+  padding: 1.2rem 2.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 60%;
+  transition: all 0.3s;
+}
+.login__input::placeholder {
+  color: #bbb;
+}
+.login__btn,
+.signup__btn {
+  padding: 1.1rem 2rem;
+  border: 1px solid #ccc;
+  background: none;
+  outline: 0;
+  border-radius: 4px;
+  background-color: #5d3fd3;
+  color: #cbc3e3;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.login__input:focus,
+.login__input:hover {
 }
