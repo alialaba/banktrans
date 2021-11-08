@@ -173,11 +173,37 @@ btnLogin.addEventListener("click", (e) => {
     }
 
     //clear input fields
-    inputLoginUsername.value = ""
-    inputLoginPin.value = ""
+    inputLoginPin.value = inputLoginUsername.value = ""
+
     //loss focus on the input using blur
     inputLoginPin.blur();
 
     //display update function
     updateUI(currentAccount);
+})
+
+
+btnTransfer.addEventListener("click", (e) => {
+    e.preventDefault();
+    const amount = Number(inputTransferAmount.value);
+    console.log(amount)
+    const recieverAcc = accounts.find((acc) => acc.username === inputTransferTo.value);
+    console.log(recieverAcc)
+
+    if (amount > 0 && currentAccount.balance >= amount && recieverAcc?.username !== currentAccount.username) {
+        //push the debit money to the currentAccout
+        currentAccount.movements.push(-amount);
+        //push the amount
+        recieverAcc.movements.push(amount);
+    }
+
+
+    //update UI
+    updateUI(currentAccount)
+    //clear field input
+    inputTransferTo.value = inputTransferAmount.value = ""
+
+    //loss focus on the input using blur
+    inputTransferAmount.blur();
+
 })
