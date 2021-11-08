@@ -76,7 +76,7 @@ const btnTransfer = document.querySelector(".form__btn--transfer");
 const btnSort = document.querySelector(".btn--sort");
 
 const inputLoginUsername = document.querySelector(".login__input--user");
-const inputLoginPassword = document.querySelector(".login__input--pin");
+const inputLoginPin = document.querySelector(".login__input--pin");
 const inputTransferTo = document.querySelector(".form__input--to");
 const inputTransferAmount = document.querySelector(".form__input--amount");
 const inputCloseUser = document.querySelector(".form__input--user");
@@ -162,13 +162,22 @@ btnLogin.addEventListener("click", (e) => {
     e.preventDefault();
     currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
     console.log(currentAccount)
-    if (currentAccount.pin === Number(inputLoginPassword.value)) {
+    if (currentAccount.pin === Number(inputLoginPin.value)) {
         //display app UI
         containerApp.style.opacity = 100;
         containerNav.style.opacity = 100;
         //display login accout name
         labelWelcome.textContent = `Welcome Back ${currentAccount.owner.split(" ")[0]}`
+    } else {
+        alert("Invalid login credentials")
     }
 
+    //clear input fields
+    inputLoginUsername.value = ""
+    inputLoginPin.value = ""
+    //loss focus on the input using blur
+    inputLoginPin.blur();
+
+    //display update function
     updateUI(currentAccount);
 })
