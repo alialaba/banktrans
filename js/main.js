@@ -207,3 +207,25 @@ btnTransfer.addEventListener("click", (e) => {
     inputTransferAmount.blur();
 
 })
+
+btnLoan.addEventListener("click", (e) => {
+    e.preventDefault();
+    const loanAmount = Number(inputLoanAmount.value);
+    console.log(loanAmount)
+
+    const bankCondition = currentAccount.movements.some(mov => mov >= loanAmount * 0.1)
+    console.log(bankCondition)
+
+    if (loanAmount > 0 && bankCondition) {
+        //push the loan request amout
+        currentAccount.movements.push(loanAmount);
+    }
+    //update UI
+    updateUI(currentAccount)
+
+    //clear field
+    inputLoanAmount.value = ""
+    inputLoanAmount.blur();
+
+
+})
