@@ -32,7 +32,9 @@ img {
   align-items: center;
   padding: 0 2rem;
 
-  opacity: 0;
+  /* opacity: 0; */
+  /* display: none; */
+  visibility: hidden;
   transition: all 1s;
 }
 .logo {
@@ -137,7 +139,9 @@ img {
   gap: 2rem;
 
   /* This create the fade in/out animation */
-  opacity: 0;
+  /* opacity: 0; */
+  /* display: none; */
+  visibility: hidden;
   transition: all 1s;
 }
 .balance {

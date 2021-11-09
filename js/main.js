@@ -68,6 +68,7 @@ const labelTimer = document.querySelector(".timer")
 const containerMovements = document.querySelector(".movements");
 const containerApp = document.querySelector(".app");
 const containerNav = document.querySelector('.navbar')
+const containerUserLogs = document.querySelector(".user-logs-section")
 
 const btnLogin = document.querySelector(".login__btn");
 const btnClose = document.querySelector(".form__btn--close");
@@ -157,15 +158,16 @@ const updateUI = (acc) => {
 }
 
 
-let currentAccount
+let currentAccount;
 btnLogin.addEventListener("click", (e) => {
     e.preventDefault();
     currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
     console.log(currentAccount)
     if (currentAccount.pin === Number(inputLoginPin.value)) {
         //display app UI
-        containerApp.style.opacity = 100;
-        containerNav.style.opacity = 100;
+        containerApp.style.visibility = 'visible';
+        containerNav.style.visibility = 'visible';
+        containerUserLogs.style.display = 'none';
         //display login accout name
         labelWelcome.textContent = `Welcome Back ${currentAccount.owner.split(" ")[0]}`
     } else {
@@ -229,3 +231,24 @@ btnLoan.addEventListener("click", (e) => {
 
 
 })
+
+btnClose.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (inputCloseUser.value === currentAccount.username &&
+        Number(inputClosePassword.value) === currentAccount.pin) {
+        //find the index of the current account
+        const index = accounts.findIndex(acc => acc.username === currentAccount.username);
+
+        //delete current
+        accounts.splice(index, 1)
+        containerApp.style.visibility = "hidden";
+        containerNav.style.visibility = "hidden";
+        containerUserLogs.style.display = "block";
+
+    }
+    //clear field 
+    inputCloseUser.value = inputClosePassword.value = ""
+    inputClosePassword.blur();
+
+})
+
