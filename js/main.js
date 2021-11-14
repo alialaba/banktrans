@@ -1,27 +1,27 @@
 'use strict';
 /*******FUNCTION FOR SWITCHING TABS */
-const openForm = (evt, formName) => {
-    let i, tabcontent, tablinks;
+// const openForm = (evt, formName) => {
+//     let i, tabcontent, tablinks;
 
-    tabcontent = document.getElementsByClassName("tab-content")
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tab")
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "")
-    }
+//     tabcontent = document.getElementsByClassName("tab-content")
+//     for (i = 0; i < tabcontent.length; i++) {
+//         tabcontent[i].style.display = "none";
+//     }
+//     tablinks = document.getElementsByClassName("tab")
+//     for (i = 0; i < tablinks.length; i++) {
+//         tablinks[i].className = tablinks[i].className.replace(" active", "")
+//     }
 
-    document.getElementById(formName).style.display = "block";
-    evt.currentTarget.className += " active";
+//     document.getElementById(formName).style.display = "block";
+//     evt.currentTarget.className += " active";
 
-}
+// }
 
-window.addEventListener("load", (event) => {
-    document.getElementById('login').style.display = "block";
-    document.getElementById('signup').style.display = "none";
+// window.addEventListener("load", (event) => {
+//     document.getElementById('login').style.display = "block";
+//     document.getElementById('signup').style.display = "none";
 
-})
+// })
 
 
 //USER DATA API
@@ -67,8 +67,8 @@ const labelTimer = document.querySelector(".timer")
 
 const containerMovements = document.querySelector(".movements");
 const containerApp = document.querySelector(".app");
-const containerNav = document.querySelector('.navbar')
-const containerUserLogs = document.querySelector(".user-logs-section")
+const containerNav = document.querySelector('.nav')
+
 
 const btnLogin = document.querySelector(".login__btn");
 const btnClose = document.querySelector(".form__btn--close");
@@ -165,9 +165,8 @@ btnLogin.addEventListener("click", (e) => {
     console.log(currentAccount)
     if (currentAccount.pin === Number(inputLoginPin.value)) {
         //display app UI
-        containerApp.style.visibility = 'visible';
-        containerNav.style.visibility = 'visible';
-        containerUserLogs.style.display = 'none';
+        containerApp.style.opacity = 100;
+        containerNav.style.opacity = 100;
         //display login accout name
         labelWelcome.textContent = `Welcome Back ${currentAccount.owner.split(" ")[0]}`
     } else {
@@ -241,9 +240,9 @@ btnClose.addEventListener("click", (e) => {
 
         //delete current
         accounts.splice(index, 1)
-        containerApp.style.visibility = "hidden";
-        containerNav.style.visibility = "hidden";
-        containerUserLogs.style.display = "block";
+        containerApp.style.opacity = 0;
+
+
 
     }
     //clear field 

@@ -14,23 +14,29 @@
 </head>
 <body>
    
-    <section class="user-logs-section">
+    <!-- <section class="user-logs-section">
         
         <div class="user-logs">
            <div class="user-logs-img">
-                <!-- <picture>
+                <picture>
                     <source srcset="assets/payment.webp" type="image/webp" />
-                    <source srcset="assets/payment-min.png" type="image/png" /> -->
+                    <source srcset="assets/payment-min.png" type="image/png" />
                     <img  src="/assets/payment-min.png"
                      class="" 
                      alt="payment illustration"
                      />
-                <!-- </picture> -->
+                </picture>
            </div>
            <div class="user-logs-form">
-               <h1 class="heading">Make your Transfer</h1>
-               <p class="heading-sub">Start banking with Banktrans</p>
-            <!-- TABS -->
+    <a href="#" >
+            <img src="/assets/logo.png" alt="logo" class="logo">
+        </a>
+            <div>
+                <h1 class="heading">Make your Transfer</h1>
+                <p class="heading-sub">Start banking with Banktrans</p>
+
+            </div>
+                           TABS
             <div class="tabs">
                 <div class="tab tab-login active" onclick="openForm(event,'login')">
                     <p class="tab-title">Login</p>
@@ -39,7 +45,7 @@
                     <p class="tab-title">SignUp</p>
                 </div>
             </div>
-               <!-- LOGIN FORM -->
+               LOGIN FORM
                <div class="tab-content" id="login">
                 <form action="login" >
                     <div class="field">
@@ -56,7 +62,7 @@
 
                </div>
 
-               <!-- SIGNUP FORM -->
+               SIGNUP FORM
             <div class="tab-content" id="signup">
                 <form action="" >
                     <div class="field">
@@ -79,21 +85,27 @@
            </div>
         </div>
 
-    </section>
+    </section> -->
 
     <!-- TOP NAVIGATION -->
-    <nav class="navbar">
-        <div>
-            <p class="welcome">Banktrans</p>
-        </div>
-        <div>
-            <img src="/assets/logo.png" alt="Logo" class="logo" />
-        </div>
-
-        <div>
-            <p class="welcome">Banktrans</p>
-        </div>
-    
+    <nav class="nav">
+      <p class="welcome">Log in to get started</p>
+      <img src="/assets/logo.png" alt="Logo" class="logo" />
+      <form class="login">
+        <input
+          type="text"
+          placeholder="user"
+          class="login__input login__input--user"
+        />
+        <!-- In practice, use type="password" -->
+        <input
+          type="password"
+          placeholder="PIN"
+          maxlength="4"
+          class="login__input login__input--pin"
+        />
+        <button class="login__btn">&rarr;</button>
+      </form>
     </nav>
 
     <main class="app">
