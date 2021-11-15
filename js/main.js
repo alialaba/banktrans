@@ -94,7 +94,7 @@ const displayMovements = (movements, sort = false) => {
         const html = `
         <div class="movements__row">
                 <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
-                <div class="movements__value">${mov}€</div>
+                <div class="movements__value">${mov.toFixed(2)}€</div>
         </div>
         `
         containerMovements.insertAdjacentHTML("afterbegin", html)
@@ -108,7 +108,7 @@ const displayMovements = (movements, sort = false) => {
 
 const calcDisplayBalance = (acc) => {
     acc.balance = acc.movements.reduce((ac, mov) => ac + mov, 0)
-    labelBalance.textContent = `${acc.balance}€`
+    labelBalance.textContent = `${acc.balance.toFixed(2)}€`
 }
 // calcDisplayBalance(account1)
 
@@ -120,12 +120,12 @@ const calcDisplaySummary = (acc) => {
     acc.income = acc.movements.filter((mov) => mov > 0).reduce((ac, mov) => ac + mov, 0);
 
     //display Income summary
-    labelSumIn.textContent = `${acc.income}€`;
+    labelSumIn.textContent = `${acc.income.toFixed(2)}€`;
 
     acc.outgoing = acc.movements.filter((mov) => mov < 0).reduce((acc, mov) => acc + mov, 0);
 
     //display Outgoing summary
-    labelSumOut.textContent = `${Math.abs(acc.outgoing)}€`
+    labelSumOut.textContent = `${Math.abs(acc.outgoing.toFixed(2))}€`
 
 
     acc.interest = acc.movements.filter((mov) => mov > 0)
@@ -134,7 +134,7 @@ const calcDisplaySummary = (acc) => {
         .filter((int) => int >= 1)
         .reduce((ac, int) => ac + int, 0)
     // display interest
-    labelSumInInterest.textContent = `${acc.interest}€`;
+    labelSumInInterest.textContent = `${acc.interest.toFixed(2)}€`;
 }
 // calcDisplaySummary(account1)
 
@@ -211,7 +211,7 @@ btnTransfer.addEventListener("click", (e) => {
 
 btnLoan.addEventListener("click", (e) => {
     e.preventDefault();
-    const loanAmount = Number(inputLoanAmount.value);
+    const loanAmount = Math.floor(inputLoanAmount.value);
     console.log(loanAmount)
 
     const bankCondition = currentAccount.movements.some(mov => mov >= loanAmount * 0.1)
