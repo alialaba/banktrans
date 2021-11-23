@@ -16,9 +16,9 @@ const account1 = {
         '2020-01-28T09:15:04.904Z',
         '2020-04-01T10:17:24.185Z',
         '2020-05-08T14:11:59.604Z',
-        '2020-07-26T17:01:17.194Z',
-        '2020-07-28T23:36:17.929Z',
-        '2020-08-01T10:51:36.790Z',
+        '2021-11-18T17:01:17.194Z',
+        '2021-11-20T23:36:17.929Z',
+        '2021-11-22T10:51:36.790Z',
     ],
     currency: 'EUR',
     locale: 'pt-PT', // de-DE
@@ -73,6 +73,28 @@ const inputCloseUser = document.querySelector(".form__input--user");
 const inputClosePassword = document.querySelector(".form__input--pin");
 const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 
+//FUNCTIONS
+const formatMovementDate = (date) => {
+    const calcDaysPassed = (date1, date2) => Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
+    const daysPassed = calcDaysPassed(new Date(), date)
+    console.log(daysPassed)
+    if (daysPassed === 0) return `Today`;
+    if (daysPassed === 1) return `Yesterday`;
+    if (daysPassed <= 7) return `${daysPassed} days ago`;
+
+    //else display transaction date
+    const currentDate = `${date.getDate()}`.padStart(2, "0")///(showlenth, addWhen length is single)
+    const currentMonth = `${date.getMonth() + 1}`.padStart(2, "0")
+    const currentYear = date.getFullYear();
+
+    return `${currentDate}/${currentMonth}/${currentYear}`;
+
+}
+
+
+
+
+
 /**DISPLAY MOVEMENTS FUNCTION**/
 const displayMovements = (acc, sort = false) => {
     containerMovements.innerHTML = "";
@@ -83,12 +105,7 @@ const displayMovements = (acc, sort = false) => {
         //movementDate time setter
         const date = new Date(acc.movementsDates[i]);
 
-        const currentDate = `${date.getDate()}`.padStart(2, "0")///(showlenth, addWhen length is single)
-        const currentMonth = `${date.getMonth() + 1}`.padStart(2, "0")
-        const currentYear = date.getFullYear();
-
-        const displayDate = `${currentDate}/${currentMonth}/${currentYear}`;
-
+        const displayDate = formatMovementDate(date);
         const html = `
         <div class="movements__row">
                 <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
@@ -227,6 +244,7 @@ btnTransfer.addEventListener("click", (e) => {
     inputTransferAmount.blur();
 
 })
+
 
 btnLoan.addEventListener("click", (e) => {
     e.preventDefault();
