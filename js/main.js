@@ -74,7 +74,7 @@ const inputClosePassword = document.querySelector(".form__input--pin");
 const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 
 //FUNCTIONS
-const formatMovementDate = (date) => {
+const formatMovementDate = (date, locale) => {
     const calcDaysPassed = (date1, date2) => Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
     const daysPassed = calcDaysPassed(new Date(), date)
     console.log(daysPassed)
@@ -83,12 +83,13 @@ const formatMovementDate = (date) => {
     if (daysPassed <= 7) return `${daysPassed} days ago`;
 
     //else display transaction date
-    const currentDate = `${date.getDate()}`.padStart(2, "0")///(showlenth, addWhen length is single)
-    const currentMonth = `${date.getMonth() + 1}`.padStart(2, "0")
-    const currentYear = date.getFullYear();
+    // const currentDate = `${date.getDate()}`.padStart(2, "0")///(showlenth, addWhen length is single)
+    // const currentMonth = `${date.getMonth() + 1}`.padStart(2, "0")
+    // const currentYear = date.getFullYear();
 
-    return `${currentDate}/${currentMonth}/${currentYear}`;
+    // return `${currentDate}/${currentMonth}/${currentYear}`;
 
+    return new Intl.DateTimeFormat(locale).format(date)
 }
 
 
@@ -105,7 +106,7 @@ const displayMovements = (acc, sort = false) => {
         //movementDate time setter
         const date = new Date(acc.movementsDates[i]);
 
-        const displayDate = formatMovementDate(date);
+        const displayDate = formatMovementDate(date, acc.locale);
         const html = `
         <div class="movements__row">
                 <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
@@ -118,7 +119,6 @@ const displayMovements = (acc, sort = false) => {
 
 }
 // displayMovements(account1.movements)
-
 
 /*FUNCTION THAT CALCULATE AND DISPLAY BALANCE */
 
@@ -184,6 +184,7 @@ containerApp.style.opacity = 100;
 
 
 
+
 btnLogin.addEventListener("click", (e) => {
     e.preventDefault();
     currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
@@ -194,13 +195,32 @@ btnLogin.addEventListener("click", (e) => {
         //display login accout name
         labelWelcome.textContent = `Welcome Back ${currentAccount.owner.split(" ")[0]}`
         //Create transfer dates
+
+
         const now = new Date();
-        const currentDate = `${now.getDate()}`.padStart(2, "0")
-        const currentMonth = now.getMonth() + 1;
-        const currentYear = now.getFullYear();
-        const currentHour = `${now.getHours()}`.padStart(2, "0")
-        const currentMinute = `${now.getMinutes()}`.padStart(2, "0")
-        labelDate.textContent = `${currentDate}/${currentMonth}/${currentYear} ${currentHour}:${currentMinute}`;
+        //setter second parameter
+        const options = {
+            hour: "numeric",
+            minute: "numeric",
+            day: "numeric",
+            month: "numeric",
+            year: "numeric"
+        }
+        //how to get a locale from user browser
+        // const locale = navigator.language;
+
+        labelDate.textContent = new Intl.DateTimeFormat(currentAccount.locale, options).format(now)
+
+
+
+
+        // const now = new Date();
+        // const currentDate = `${now.getDate()}`.padStart(2, "0")
+        // const currentMonth = now.getMonth() + 1;
+        // const currentYear = now.getFullYear();
+        // const currentHour = `${now.getHours()}`.padStart(2, "0")
+        // const currentMinute = `${now.getMinutes()}`.padStart(2, "0")
+        // labelDate.textContent = `${currentDate}/${currentMonth}/${currentYear} ${currentHour}:${currentMinute}`;
 
 
     } else {
